@@ -10,6 +10,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
@@ -20,8 +21,11 @@ set(msg_files
   "msg/PozyxRanging.msg"
   "msg/RangingDiff.msg"
   "msg/PozyxRangingWithCir.msg"
+  DEPENDENCIES builtin_interfaces
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
 )
+
+ament_package()
