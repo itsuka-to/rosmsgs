@@ -1,42 +1,27 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(gtec_msgs)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
 
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -std=c++11")
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
-add_definitions(-std=c++11)
+find_package(ament_cmake REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-  message_generation
+set(msg_files
+  "msg/GenericRanging.msg"
+  "msg/Ranging.msg"
+  "msg/UWBRanging.msg"
+  "msg/DWRanging.msg"
+  "msg/PozyxRanging.msg"
+  "msg/RangingDiff.msg"
+  "msg/PozyxRangingWithCir.msg"
 )
 
-## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  GenericRanging.msg
-  Ranging.msg
-  UWBRanging.msg
-  DWRanging.msg
-  PozyxRanging.msg
-  RangingDiff.msg
-  PozyxRangingWithCir.msg
- )
-
-## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
-
-
-catkin_package(
-
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
 )
