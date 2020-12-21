@@ -1,4 +1,11 @@
 # gtec_msgs for ros2-foxy-devel
+This repository is modified to use gtec_msgs on ros2 foxy.
+
+## Destructive change 
+* Renamed all msg values to snake_case.
+* gtec_msgs/msg/Ranging
+    * anchor_id (int16) -> anchor_id(string)
+    * tag_id (int16) -> tag_id(string)
 
 ---
 

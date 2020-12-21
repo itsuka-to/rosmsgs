@@ -3,9 +3,11 @@
 <package format="3">
   <name>gtec_msgs</name>
   <version>1.0.0</version>
-  <description>The GTEC MSGS package</description>
+  <description>The GTEC MSGS package modified to use on ros2-foxy</description>
 
   <maintainer email="valentin.barral@udc.es">Valentin Barral</maintainer>
+
+  <author email="itsuka@irvs.ait.kyushu-u.ac.jp">Itsuka Tomoya</author>
 
   <license>MIT</license>
 
